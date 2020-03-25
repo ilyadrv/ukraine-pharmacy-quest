@@ -22,17 +22,17 @@ class Ukraine
     protected function superCitizen(){
         $person = new stdClass();
         $person->hasMaska = true;
-        $person->fuckYaAll = true;
+        $person->fuckYaAll = true; //authority, authority friend or familie member, police officer, authority friend or familie member, man with a gun
         $person->hasCar = true;
         $person->money = 100000000000;
         return $person;
     }
 
     protected function goToPharmacy($person){
-        if(!$person->hasCar && !$this->usePublicTransport($person)){ //use public transport ot own car
+        if(!$person->hasCar && !$this->usePublicTransport($person)){ //use public transport or own car
             return false; //or die;
         }
-        if (!$person->hasMaska && !$person->fuckYaAll){ // dont have maska or fuckYaAll skill?
+        if (!$person->hasMaska && !$person->fuckYaAll){ // don't have maska or fuckYaAll skill?
             if (!$this->buyMaska($person)){ // buy it!
                 return false; //or get the fuck out
             }
@@ -47,19 +47,19 @@ class Ukraine
         return true;
     }
 
-
     protected function usePublicTransport($person){
-        if($person->money){ // need to pay police when you dont have special permit
+        if($person->money){ // need to pay police when you don't have special permit
             if ($person->hasMaska){
                 $person->money -= 100; //100 UAH if have maska
             }
             else{
-                $person->money -= 200;  //100 UAH if have no maska
+                $person->money -= 200;  //200 UAH if have no maska
             }
         }
         else {
             return false; // or get the fuck out
         }
+		return true; 
     }
 }
 
